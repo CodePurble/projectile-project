@@ -1,4 +1,10 @@
-from math import *
+from math import pow
+from math import radians
+from math import sin
+from math import cos
+from math import tan
+from math import sqrt
+from math import pi
 
 class idealProjectile:
 

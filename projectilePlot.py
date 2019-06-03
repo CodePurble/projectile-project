@@ -1,9 +1,9 @@
-from projectile import *
+import projectile
 import matplotlib.pyplot as plt
 import numpy as np
 
-p1 = idealProjectile(30, 45)
-p2 = realProjectile(30, 45, 0.450, 0.22)
+p1 = projectile.idealProjectile(30, 45)
+p2 = projectile.realProjectile(30, 45, 0.450, 0.22)
 
 xList1 = []
 yList1 = []
