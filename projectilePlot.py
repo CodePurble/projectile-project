@@ -1,6 +1,16 @@
 import projectile
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+
+fig = ""
+
+if(len(sys.argv) == 1):
+    fig = "./img/fig.png"
+elif(len(sys.argv) > 2):
+    print("Too many arguments")
+else:
+    fig = "./img/" + sys.argv[1]
 
 p1 = projectile.idealProjectile(30, 45)
 p2 = projectile.realProjectile(30, 45, 0.450, 0.22)
@@ -38,4 +48,5 @@ plt.legend()
 # plt.xlabel('Distance (in m)')
 # plt.ylabel('Height (in m)')
 
-plt.show()
+# plt.show()
+plt.savefig(fig, bbox_inches='tight')
