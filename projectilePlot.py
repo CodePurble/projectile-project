@@ -10,10 +10,10 @@ if(len(sys.argv) == 1):
 elif(len(sys.argv) > 2):
     print("Too many arguments")
 else:
-    fig = "./img/" + sys.argv[1]
+    fig = sys.argv[1]
 
-p1 = projectile.idealProjectile(30, 45)
-p2 = projectile.realProjectile(30, 45, 0.450, 0.22)
+p1 = projectile.Ideal_Projectile(30, 45)
+p2 = projectile.Projectile_In_Medium(30, 45, 0.450, 0.22)
 
 xList1 = []
 yList1 = []
@@ -22,13 +22,13 @@ yList2 = []
 
 for t in np.arange(0, p1.idealFlightTime, 0.05):
 
-    xList1.append(p1.instParamIdeal(t)[0])
-    yList1.append(p1.instParamIdeal(t)[1])
+    xList1.append(p1.Inst_Param_Ideal(t)[0])
+    yList1.append(p1.Inst_Param_Ideal(t)[1])
 
 for t in np.arange(0, p2.realFlightTime, 0.05):
 
-    xList2.append(p2.instParamReal(t)[0])
-    yList2.append(p2.instParamReal(t)[1])
+    xList2.append(p2.Inst_Param_Real(t)[0])
+    yList2.append(p2.Inst_Param_Real(t)[1])
 
 # Plotting using pyplot
 plt.figure(1)
@@ -49,4 +49,4 @@ plt.legend()
 # plt.ylabel('Height (in m)')
 
 # plt.show()
-plt.savefig(fig, bbox_inches='tight')
+plt.savefig(fig)
