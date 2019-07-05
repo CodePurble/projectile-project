@@ -71,6 +71,7 @@ class Projectile_In_Medium(Ideal_Projectile):
         realRange: Maximum range
         realHeight: Maximum height achieved
         realFlightTime: Total flight time
+        quadraticDragParam: Quadratic drag parameter
     """
     def __init__(self, initVel, angle, mass=0.45, diameter=0.22, dragCoeff=0.5, mediumDensity=1.225):
         super().__init__(initVel, angle)
@@ -83,6 +84,7 @@ class Projectile_In_Medium(Ideal_Projectile):
         self.realRange = round(((initVel ** 2) * sin(2 * radians(angle))) / self.acc, 4)
         self.realHeight = round(((initVel * sin(radians(angle))) ** 2) / self.acc, 4)
         self.realFlightTime = round((2 * initVel * sin(radians(angle))) / self.acc, 4)
+        self.diameter = diameter
 
 
 
@@ -100,46 +102,49 @@ class Projectile_In_Medium(Ideal_Projectile):
         Returns:
             Calculated results as a list [x, y, v]
         """
-        x = self.initVel * cos(self.angle) * time
-        y = (
-            x * tan(self.angle) - (0.5 * self.acc * pow(x / cos(self.angle), 2) / self.initVel ** 2)
-            )
-        v = sqrt(
-            (self.initVel * sin(self.angle) - self.acc * time) ** 2 + (self.initVel * cos(self.angle)) ** 2
-            )
+        try:
+            x = self.initVel * cos(self.angle) * time
+            y = (
+                x * tan(self.angle) - (0.5 * self.acc * pow(x / cos(self.angle), 2) / self.initVel ** 2)
+                )
+            v = sqrt(
+                (self.initVel * sin(self.angle) - self.acc * time) ** 2 + (self.initVel * cos(self.angle)) ** 2
+                )
 
-        x = round(x, 4)
-        y = round(y, 4)
-        v = round(v, 4)
+            x = round(x, 4)
+            y = round(y, 4)
+            v = round(v, 4)
 
-        paramList = [x, y, v]
+            paramList = [x, y, v]
 
-        return(paramList)
+            return(paramList)
+        
+        except ZeroDivisionError:
+            return([0, 0, 0])
 
-    @property
-    def Vortex_Strength(self, radius, revs):
+    def Vortex_Strength(self, revs):
         """
         Calculate vortex strength
 
         Args:
-            radius: radius of ball
             revs: revolutions ball is taking per second
         Returns: vortex strength
         """
-        vortexStrength = ((2 * pi * radius * 0.01) ** 2) * revs
+        vortexStrength = ((2 * pi * self.diameter/2 * 0.01) ** 2) * revs
         return(vortexStrength)
 
-    def Inst_Magnus_Force(self, time):
+    def Inst_Magnus_Force(self, time, revs):
         """
         Approximate force on ball due to the Magnus effect
         
         Args:
+            revs: revolutions ball is taking per second
             time: Time at which said properties must be calculated
         Returns:
             Magnus force
         """
-        magnusForce = self.Vortex_Strength * Inst_Param_Resistance(time)[2] * self.mediumDensity * self.diameter
-        return(magnusForce)
+        magnusForce = self.Vortex_Strength(revs) * self.Inst_Param_Resistance(time)[2] * self.mediumDensity * self.diameter
+        return(round(magnusForce, 4))
     
     def Inst_Param_Magnus(self, time):
         pass
