@@ -6,14 +6,14 @@ import sys
 fig = ""
 
 if(len(sys.argv) == 1):
-    fig = "./img/fig.png"
+    fig = "../img/fig.png"
 elif(len(sys.argv) > 2):
     print("Too many arguments")
 else:
     fig = sys.argv[1]
 
-p1 = projectile.Ideal_Projectile(30, 45)
-p2 = projectile.Projectile_In_Medium(30, 45, 0.450, 0.22)
+p1 = projectile.IdealProjectile(30, 45)
+p2 = projectile.ProjectileInMedium(30, 45, 0.450, 0.22)
 
 xList1 = []
 yList1 = []

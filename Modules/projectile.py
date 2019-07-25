@@ -1,3 +1,7 @@
+"""
+This is a Python 3 implementation of projectile motion under various conditions. All results are rounded to 4 decimal places
+"""
+
 from math import pow
 from math import radians
 from math import sin
@@ -5,8 +9,16 @@ from math import cos
 from math import tan
 from math import sqrt
 from math import pi
+from enum import IntEnum
 
-class Ideal_Projectile:
+@unique
+class SpinDirection(IntEnum):
+    top = 1
+    back = 2
+    left = 3
+    right = 4
+
+class IdealProjectile:
     """
     An object moving through a vacuum with or without spin
     (All units are SI except unless specified)
@@ -54,7 +66,7 @@ class Ideal_Projectile:
 
         return(paramList)
 
-class Projectile_In_Medium(Ideal_Projectile):
+class ProjectileInMedium(IdealProjectile):
     """
     An object moving through a specified medium with or without spin
     (All units are SI except unless specified)
@@ -133,18 +145,19 @@ class Projectile_In_Medium(Ideal_Projectile):
         vortexStrength = ((2 * pi * self.diameter/2 * 0.01) ** 2) * revs
         return(vortexStrength)
 
-    def Inst_Magnus_Force(self, time, revs):
+    def Inst_Magnus_Force(self, time, revs, spinType):
         """
         Approximate force on ball due to the Magnus effect
         
         Args:
             revs: revolutions ball is taking per second
             time: Time at which said properties must be calculated
+            spinType: top/back/left/right
         Returns:
             Magnus force
         """
         magnusForce = self.Vortex_Strength(revs) * self.Inst_Param_Resistance(time)[2] * self.mediumDensity * self.diameter
-        return(round(magnusForce, 4))
+        return([round(magnusForce, 4), SpinDirection.spinType.value])
     
     def Inst_Param_Magnus(self, time):
         pass
