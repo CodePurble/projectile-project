@@ -10,4 +10,4 @@ __pycache__/
 venv/
 
 # Tests
-tests/
+./tests.py
