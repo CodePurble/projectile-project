@@ -11,7 +11,7 @@ from math import sqrt
 from math import pi
 from enum import IntEnum
 
-@unique
+# @unique
 class SpinDirection(IntEnum):
     top = 1
     back = 2
