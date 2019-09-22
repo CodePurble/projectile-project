@@ -21,7 +21,7 @@ class SpinDirection(IntEnum):
 class IdealProjectile:
     """
     An object moving through a vacuum with or without spin
-    (All units are SI except unless specified)
+    (All units are SI unless specified)
 
     Attributes:
         initVel: Initial velocity
@@ -69,7 +69,7 @@ class IdealProjectile:
 class ProjectileInMedium(IdealProjectile):
     """
     An object moving through a specified medium with or without spin
-    (All units are SI except unless specified)
+    (All units are SI unless specified)
 
     Attributes:
         initVel: Initial velocity
