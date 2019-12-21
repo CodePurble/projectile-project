@@ -13,10 +13,11 @@ from enum import IntEnum
 
 # Doesn't work as intended, fix
 class SpinDirection(IntEnum):
-    top = 1
-    back = 2
-    left = 3
-    right = 4
+    # top = 1
+    # back = 2
+    # left = 3
+    # right = 4
+    pass
 
 class IdealProjectile:
     """
@@ -156,8 +157,9 @@ class ProjectileInMedium(IdealProjectile):
         Returns:
             Magnus force
         """
-        magnusForce = self.Vortex_Strength(revs) * self.Inst_Param_Resistance(time)[2] * self.mediumDensity * self.diameter
-        return([round(magnusForce, 4), SpinDirection.spinType.value])
+        # magnusForce = self.Vortex_Strength(revs) * self.Inst_Param_Resistance(time)[2] * self.mediumDensity * self.diameter
+        # return([round(magnusForce, 4), SpinDirection.spinType.value])
+        pass
     
     def Inst_Param_Magnus(self, time):
         pass
