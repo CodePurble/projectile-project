@@ -5,5 +5,5 @@ This is a simulation of horizontal projectile motion that takes into account bot
 * numpy
 * matplotlib (for graphing)
 
-#NOTE
+# NOTE
 ## Magnus effect and SpinDirection classes are broken and don't work at the moment!!
