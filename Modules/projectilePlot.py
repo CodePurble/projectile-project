@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import projectile
 import matplotlib.pyplot as plt
 import numpy as np
@@ -27,8 +29,8 @@ for t in np.arange(0, p1.idealFlightTime, 0.05):
 
 for t in np.arange(0, p2.realFlightTime, 0.05):
 
-    xList2.append(p2.Inst_Param_Real(t)[0])
-    yList2.append(p2.Inst_Param_Real(t)[1])
+    xList2.append(p2.Inst_Param_Resistance(t)[0])
+    yList2.append(p2.Inst_Param_Resistance(t)[1])
 
 # Plotting using pyplot
 plt.figure(1)
