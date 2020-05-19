@@ -8,11 +8,11 @@ import sys
 fig = ""
 
 if(len(sys.argv) == 1):
-    fig = "../img/fig.png"
+	fig = "../img/fig.png"
 elif(len(sys.argv) > 2):
-    print("Too many arguments")
+	print("Too many arguments")
 else:
-    fig = sys.argv[1]
+	fig = sys.argv[1]
 
 p1 = projectile.IdealProjectile(30, 45)
 p2 = projectile.ProjectileInMedium(30, 45, 0.450, 0.22)
@@ -24,13 +24,13 @@ yList2 = []
 
 for t in np.arange(0, p1.idealFlightTime, 0.05):
 
-    xList1.append(p1.Inst_Param_Ideal(t)[0])
-    yList1.append(p1.Inst_Param_Ideal(t)[1])
+	xList1.append(p1.Inst_Param_Ideal(t)[0])
+	yList1.append(p1.Inst_Param_Ideal(t)[1])
 
 for t in np.arange(0, p2.realFlightTime, 0.05):
 
-    xList2.append(p2.Inst_Param_Resistance(t)[0])
-    yList2.append(p2.Inst_Param_Resistance(t)[1])
+	xList2.append(p2.Inst_Param_Resistance(t)[0])
+	yList2.append(p2.Inst_Param_Resistance(t)[1])
 
 # Plotting using pyplot
 plt.figure(1)
