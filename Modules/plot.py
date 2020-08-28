@@ -9,11 +9,11 @@ from pathlib import Path
 figPath = ''
 
 if(len(sys.argv) == 1):
-	figPath = 'img/fig.png'
+    figPath = 'img/fig.png'
 elif(len(sys.argv) > 2):
-	print("Too many arguments")
+    print("Too many arguments")
 else:
-	figPath = sys.argv[1]
+    figPath = sys.argv[1]
 
 figFileName = Path(figPath)
 print('Image saved to-')
@@ -28,14 +28,12 @@ xList2 = []
 yList2 = []
 
 for t in np.arange(0, p1.idealFlightTime, 0.05):
-
-	xList1.append(p1.Inst_Param_Ideal(t)[0])
-	yList1.append(p1.Inst_Param_Ideal(t)[1])
+    xList1.append(p1.Inst_Param_Ideal(t)[0])
+    yList1.append(p1.Inst_Param_Ideal(t)[1])
 
 for t in np.arange(0, p2.realFlightTime, 0.05):
-
-	xList2.append(p2.Inst_Param_Resistance(t)[0])
-	yList2.append(p2.Inst_Param_Resistance(t)[1])
+    xList2.append(p2.Inst_Param_Resistance(t)[0])
+    yList2.append(p2.Inst_Param_Resistance(t)[1])
 
 # Plotting using pyplot
 plt.figure(1)
